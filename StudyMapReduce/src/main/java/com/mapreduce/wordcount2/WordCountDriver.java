@@ -36,16 +36,17 @@ public class WordCountDriver {
 //        5. 设置最终输出数据的key，value类型
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(IntWritable.class);
-
-
 //        -------------------------------------------------------------------------------
+
+//        设置分区器
+        job.setPartitionerClass(MyPartitioner.class);
+
 //        设置reduce task个数。默认part-r-00000文件只有一个，设置为2，则会有2个，分别为part-r-00000，和part-r-00001
 //        将不同的分区分到不同的文件中
         job.setNumReduceTasks(2);
 
+//        自定义的分区器里面的分区数要小于等于setNumReduceTasks的分区数
 //        -------------------------------------------------------------------------------
-
-
 
 //        6.设置数据输入和输出路径
         FileInputFormat.setInputPaths(job,new Path("data/data.txt"));
