@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--关联mapper类-->
+<mapper namespace="com.example.stumanager.mapper.DormAdminsMapper">
+    <resultMap id="BaseResultMap" type="com.example.stumanager.model.DormAdmins">
+        <id property="id" column="id" />
+        <result property="username" column="username" />
+        <result property="gender" column="gender" />
+        <result property="phone" column="phone" />
+        <result property="account" column="account" />
+        <result property="password" column="password" />
+        <result property="dormId" column="dorm_id" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,username,gender,phone,account,password,
+        dorm_id
+    </sql>
+    <!--
+        select：表示查询命令
+        id：必须和接口中的方法名称一致
+        resultType：查询的数据的类型
+
+        select * from admins where id = #{id}
+            #{id}就是方法中的参数，id默认就是方法中的参数名称
+    -->
+    <select id="queryById" resultType="com.example.stumanager.model.DormAdmins">
+        select * from dorm_admins where id = #{id}
+    </select>
+
+    <select id="login" resultType="com.example.stumanager.model.DormAdmins">
+        select * from dorm_admins where account = #{account} and password = #{password}
+    </select>
+
+<!--    <select id="login" resultType="com.leo.stumanager.entity.Admin">-->
+<!--        select * from admins where account = #{account} and password = #{password}-->
+<!--    </select>-->
+</mapper>

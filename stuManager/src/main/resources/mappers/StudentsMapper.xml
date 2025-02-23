@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.stumanager.mapper.StudentsMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.stumanager.model.Students">
+            <id property="id" column="id" />
+            <result property="code" column="code" />
+            <result property="name" column="name" />
+            <result property="gender" column="gender" />
+            <result property="dormId" column="dorm_id" />
+            <result property="roomId" column="room_id" />
+            <result property="password" column="password" />
+            <result property="phone" column="phone" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,code,name,gender,dorm_id,room_id,
+        password,phone
+    </sql>
+
+    <select id="queryById" resultType="com.example.stumanager.model.Students">
+        select * from students where id = #{id}
+    </select>
+
+    <select id="login" resultType="com.example.stumanager.model.Students">
+        select * from students where code = #{code} and password = #{password}
+    </select>
+</mapper>
