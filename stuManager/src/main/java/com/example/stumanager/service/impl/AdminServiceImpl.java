@@ -11,17 +11,17 @@ import org.springframework.stereotype.Service;
 public class AdminServiceImpl implements AdminService {
 
     @Autowired
-    private AdminMapper adminMapper;
+    private AdminMapper mapper;
     @Override
     public Admin queryById(Integer id) {
-        Admin bean = adminMapper.queryById(id);
+        Admin bean = mapper.queryById(id);
         bean.setPassword("");
         return bean;
     }
 
     @Override
     public Admin login(String account, String password) {
-        Admin bean = adminMapper.login(account, password);
+        Admin bean = mapper.login(account, password);
         bean.setPassword("");
         return bean;
     }

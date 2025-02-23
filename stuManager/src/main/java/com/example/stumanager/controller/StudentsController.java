@@ -1,8 +1,6 @@
 package com.example.stumanager.controller;
 
-import com.example.stumanager.model.DormAdmins;
 import com.example.stumanager.model.Students;
-import com.example.stumanager.service.DormAdminsService;
 import com.example.stumanager.service.StudentsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,16 +14,16 @@ import org.springframework.web.bind.annotation.RestController;
 public class StudentsController {
 
     @Autowired
-    private StudentsService studentsService;
+    private StudentsService service;
 
     @RequestMapping("/queryById")
     public Object queryById(Integer id){
-        return studentsService.queryById(id);
+        return service.queryById(id);
     }
 
 
     @PostMapping("/login")
     public Object login(@RequestBody Students bean){
-        return studentsService.login(bean.getCode(), bean.getPassword());
+        return service.login(bean.getCode(), bean.getPassword());
     }
 }

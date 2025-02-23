@@ -15,18 +15,18 @@ import org.springframework.stereotype.Service;
 public class StudentsServiceImpl implements StudentsService{
 
     @Autowired
-    private StudentsMapper studentsMapper;
+    private StudentsMapper mapper;
 
     @Override
     public Students queryById(Integer id) {
-        Students bean = studentsMapper.queryById(id);
+        Students bean = mapper.queryById(id);
         bean.setPassword("");
         return bean;
     }
 
     @Override
     public Students login(String code, String password) {
-        Students bean = studentsMapper.login(code, password);
+        Students bean = mapper.login(code, password);
         bean.setPassword("");
         return bean;
     }
