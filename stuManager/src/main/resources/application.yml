@@ -11,3 +11,11 @@ spring:
     url: jdbc:mysql://localhost:3306/mybatis
     username: root
     password: root
+config:
+  jwt:
+    # 加密密钥
+    secret: stumanager_123
+    # token有效时长
+    expire: 3600
+    # header 名称，即在请求中添加验证token的头部信息
+    header: token

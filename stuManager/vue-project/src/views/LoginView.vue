@@ -22,16 +22,20 @@ const form = reactive({
 })
 
 // 执行登录的函数
-const onSubmit = () => {
+const onSubmit = async () => {
   console.log('submit!')
   // 发起登录请求
-  axios.post('http://localhost:8080/admin/login',form)
-      .then((res)=>{
-        console.log(res)
-      }) //请求成功的处理
-      .catch((res)=>{
-        console.log(res)
-      })
+  // axios.post('http://localhost:8080/admin/login',form)
+  //     .then((res)=>{
+  //       console.log(res)
+  //     }) //请求成功的处理
+  //     .catch((res)=>{
+  //       console.log(res)
+  //     })
+  // 要使用await，前面必须有async
+  let response = await axios.post('http://localhost:8080/admin/login',form)
+  console.log(response);
+  let token = response.data;
 }
 </script>
 
