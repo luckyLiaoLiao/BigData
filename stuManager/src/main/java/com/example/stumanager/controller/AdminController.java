@@ -1,5 +1,6 @@
 package com.example.stumanager.controller;
 
+import com.example.stumanager.common.Result;
 import com.example.stumanager.config.JwtConfig;
 import com.example.stumanager.model.Admin;
 import com.example.stumanager.service.AdminService;
@@ -39,11 +40,20 @@ public class AdminController {
     public Object login(@RequestBody Admin bean) {
 
         Admin loginUser = service.login(bean.getAccount(), bean.getPassword());
+        Result result = new Result();
         if (loginUser != null) {
 //            登录成功
 //            产生token
-            return jwtConfig.createToken(loginUser.getAccount());
+            String token = jwtConfig.createToken(loginUser.getAccount());
+            result.setCode(Result.SUCCESS);
+            result.setMessage("登录成功");
+            result.setData(token);
+            return result;
+
         }
-        return "登录失败";
+
+        result.setCode(Result.FAILURE);
+        result.setMessage("登录失败");
+        return result;
     }
 }

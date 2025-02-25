@@ -1,6 +1,8 @@
 <script lang="ts">
 import {defineComponent} from 'vue'
-import axios from "axios";
+// 这个报错不影响程序运行
+import request from '../api/request'
+
 
 export default defineComponent({
   name: "LoginView"
@@ -24,18 +26,28 @@ const form = reactive({
 // 执行登录的函数
 const onSubmit = async () => {
   console.log('submit!')
-  // 发起登录请求
-  // axios.post('http://localhost:8080/admin/login',form)
-  //     .then((res)=>{
-  //       console.log(res)
-  //     }) //请求成功的处理
-  //     .catch((res)=>{
-  //       console.log(res)
-  //     })
+
   // 要使用await，前面必须有async
-  let response = await axios.post('http://localhost:8080/admin/login',form)
+  let response = await request.post('/admin/login',form)
   console.log(response);
-  let token = response.data;
+  // 这里的data就是token，因为返回值里token值是保存在data里面的
+  let {data, code,message} = response.data;
+  if (code==200){
+  // 将token保存到sessionStorage,以实现跨页面传值
+    sessionStorage.setItem('token',data)
+    // 这个报错不影响程序运行
+    sessionStorage.setItem('role',form.type);
+  } else{
+    console.log(message)
+  }
+
+  // response = await request.get('/admin/queryById?id=3',{
+  //   headers:{token: data}
+  // })
+  //
+  // // response = await request.get('http://localhost:8080/admin/queryById?id=3')
+  //
+  // console.log(response)
 }
 </script>
 
