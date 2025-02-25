@@ -1,9 +1,9 @@
 package com.lxr;
 
-public class MaxHuiWen {
+public class MaxHuiWen_jiqiao {
 
     public static void main(String[] args) {
-        MaxHuiWen mhw = new MaxHuiWen();
+        MaxHuiWen_jiqiao mhw = new MaxHuiWen_jiqiao();
         String input = "abab";
         System.out.println(mhw.getLongestPalindrome(input));;
 

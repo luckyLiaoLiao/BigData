@@ -1,9 +1,9 @@
 package com.lxr;
 
-public class MaxHuiWen_baloli {
+public class MaxHuiWen {
 
     public static void main(String[] args) {
-        MaxHuiWen_baloli mhw = new MaxHuiWen_baloli();
+        MaxHuiWen mhw = new MaxHuiWen();
 
         String inputs[] = {"ababc","abbba","cbc","ababca","abbbab","cb","b",""};
         for (int i = 0; i < inputs.length; i++) {

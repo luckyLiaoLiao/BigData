@@ -1,0 +1,27 @@
+#spring.application.name=demo
+server:
+  port:8080
+
+# 数据库数据源
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/mybatis?useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT
+    driver-class-name: com.mysql.jdbc.Driver
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#  我的加上cj报错
+
+mybatis:
+  type-aliases-package: bootbatis.pojo   #别名
+  mapper-locations: classpath:/mapper/*.xml  #xml文件
+
+logging:
+  file:
+    name: log/log.log
+  level:
+    root: info
+    bootbatis: debug
+
+## 系统自带的使用info，自己包下面的用debug模式

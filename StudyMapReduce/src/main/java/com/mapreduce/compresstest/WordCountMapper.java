@@ -1,4 +1,4 @@
-package com.mapreduce.wordcount;
+package com.mapreduce.compresstest;
 
 import org.apache.hadoop.io.IntWritable;
 import org.apache.hadoop.io.LongWritable;

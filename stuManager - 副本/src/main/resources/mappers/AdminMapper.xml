@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--关联mapper类-->
+<mapper namespace="com.example.stumanager.mapper.AdminMapper">
+    <!--
+        select：表示查询命令
+        id：必须和接口中的方法名称一致
+        resultType：查询的数据的类型
+
+        select * from admins where id = #{id}
+            #{id}就是方法中的参数，id默认就是方法中的参数名称
+    -->
+    <select id="queryById" resultType="com.example.stumanager.model.Admin">
+        select * from admins where id = #{id}
+    </select>
+
+<!--    <select id="login" resultType="com.leo.stumanager.entity.Admin">-->
+<!--        select * from admins where account = #{account} and password = #{password}-->
+<!--    </select>-->
+</mapper>
